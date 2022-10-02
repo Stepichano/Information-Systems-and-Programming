@@ -7,9 +7,9 @@
       "args": [
         "-fdiagnostics-color=always",
         "-g",
-        "${file}",
+        "/home/makson/Projects/VS.Code/Colledge/Information-Systems-and-Programming/Lab3/Ex2.c",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "$/home/makson/Projects/VS.Code/Colledge/Information-Systems-and-Programming/Lab3/debug.out"
       ],
       "options": {
         "cwd": "${fileDirname}"
