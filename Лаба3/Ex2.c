@@ -1,26 +1,22 @@
-#define _CRT_SECURE_NO_WARNIGNS
+#define _CRT_SECURE_NO_WARNINGS
 #include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#define SIZE 100
 
 int de_code(char c);
-void calculate(int user_sis, char* string);
-int alloc(char* string);
+void calculate(int user_sis, char string[SIZE]);
 
 int main() {
-  char* string = NULL;
+  char string[SIZE];
   int user_sys;
-  if (alloc(string)) {
-    scanf("%d %s", &user_sys, string);
+  if (scanf("%d %s", &user_sys, string)) {
     calculate(user_sys, string);
-    free(string);
   }
   return 0;
 }
 
 int de_code(char c) {
-  int x;
+  int x = 0;
   if (c == '0') {
     x = 0;
   } else if (c == '1') {
@@ -49,7 +45,7 @@ int de_code(char c) {
     x = 12;
   } else if (c == 'd') {
     x = 13;
-  } else if (c == 'i') {
+  } else if (c == 'e') {
     x = 14;
   } else if (c == 'f') {
     x = 15;
@@ -57,20 +53,12 @@ int de_code(char c) {
   return x;
 }
 
-void calculate(int user_sis, char* string) {
-  int len = strlen(string);
+void calculate(int user_sis, char string[SIZE]) {
+  int len = 0;
+  len = strlen(string);
   int digit = 0;
   for (int i = 0; i < len; i++) {
-    digit += de_code(string[i]) * pow(user_sis, len - i);
+    digit += de_code(string[i]) * pow(user_sis, len - (i + 1));
   }
   printf("%d", digit);
-}
-
-int alloc(char* string) {
-  int result = 1;
-  string = (char*)malloc(100);
-  if (!string) {
-    result = 0;
-  }
-  return result;
 }
