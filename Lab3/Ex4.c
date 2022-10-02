@@ -55,11 +55,15 @@ int de_code(char c) {
 }
 
 void calculate(int user_sis, char string[SIZE]) {
-  int len = 0;
+  int len;
   len = strlen(string);
-  int digit = 0;
-  for (int i = 0; i < len; i++) {
-    digit += de_code(string[i]) * pow(user_sis, len - (i + 1));
+  double digit = 0;
+  int index = 0;
+
+  for (int i = 2; i < len; i++) {
+    index -= 1;
+    digit += de_code(string[i]) * pow(user_sis, index);
   }
-  printf("%d", digit);
+
+  printf("%.5f", digit);
 }
