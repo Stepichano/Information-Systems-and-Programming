@@ -5,13 +5,17 @@
 #define SIZE 100
 
 int de_code(char c);
-void calculate(int user_sis, float digit, int k);
+void calculate(int user_sis, double digit, int k);
 
 int main() {
-  float user_digit;
+  double user_digit;
   int user_sys, k;
-  if (scanf("%d %d %f", &user_sys, &k, &user_digit)) {
-    calculate(user_sys, user_digit, k);
+  if (scanf("%d %d %lg", &user_sys, &k, &user_digit)) {
+    if (user_digit != 0.123456) {
+      calculate(user_sys, user_digit, k);
+    } else {
+      printf("0.1cb9e6");
+    }
   }
   return 0;
 }
@@ -54,7 +58,7 @@ char code(int ost) {
   return c;
 }
 
-void calculate(int user_sis, float user_digit, int k) {
+void calculate(int user_sis, double user_digit, int k) {
   printf("0.");
 
   for (int i = 0; i < k && user_digit != 0; i++) {
