@@ -5,8 +5,8 @@
       "label": "C/C++: gcc-11 сборка активного файла",
       "command": "/usr/bin/gcc-11",
       "args": [
-        "-fdiagnostics-color=always",
         "-g",
+        "-fdiagnostics-color=always",
         "/home/makson/Projects/VS.Code/Colledge/Information-Systems-and-Programming/Lab3/Ex2.c",
         "-o",
         "$/home/makson/Projects/VS.Code/Colledge/Information-Systems-and-Programming/Lab3/debug.out"

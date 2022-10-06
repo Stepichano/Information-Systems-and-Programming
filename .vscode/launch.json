@@ -8,7 +8,7 @@
       "type": "lldb",
       "request": "launch",
       "name": "Debug",
-      "program": "/home/makson/Projects/VS.Code/Colledge/Information-Systems-and-Programming/Lab3/debug.out",
+      "program": "/home/makson/Projects/VS.Code/Colledge/Information-Systems-and-Programming/Lab3/Ex3.c",
       "args": [],
       "cwd": "${workspaceFolder}"
     }
