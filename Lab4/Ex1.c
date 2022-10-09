@@ -1,25 +1,24 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#define SIZE 100
 #define SYS 2
 
-void calulate(int digit);
+int get_bit(unsigned long numb, int bit);
+int calulate(int digit);
 
 int main() {
   int digit;
   scanf("%d", &digit);
-  calulate(digit);
+  printf("%d", calulate(digit));
+  return 0;
 }
 
-void calulate(int digit) {
+int calulate(int digit) {
   int ost;
   int min = 0;
   int max = 0;
 
-  for (; digit > 0;) {
-    ost = digit % SYS;
-    digit /= SYS;
-    if (ost == 1) {
+  for (int i = 0; i < 32; i++) {
+    if (get_bit(digit, i)) {
       min++;
       if (min > max) {
         max = min;
@@ -29,5 +28,10 @@ void calulate(int digit) {
     }
   }
 
-  printf("%d", max);
+  return max;
+}
+
+int get_bit(unsigned long numb, int bit) {
+  long unsigned mask = 1 << bit;
+  return !!(mask & numb);
 }
