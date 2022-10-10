@@ -13,7 +13,6 @@ int main() {
   if (N > 20000000) N = 20000000;
   if (Q < 1) Q = 1;
   if (Q > 200000) Q = 200000;
-  ;
   for (int i = 0; i < Q; i++) scanf("%d", &mas[i]);
   for (int i = 0; i < Q; i++) {
     n = mas[i];
