@@ -8,6 +8,7 @@ void output(T* array, int len);
 void next_permut(T* table_permut, int len);
 void permut(T* table_permut, int pos, int len);
 void sort(T* table_permut, int pos, int len);
+int next_elem(T* table_permut, int pos, int len);
 
 int main() {
   T* table_permut = NULL;
@@ -22,14 +23,13 @@ int main() {
 }
 
 void next_permut(T* table_permut, int len) {
-  for (int i = 0; i >= 0; i--) {
-    if (table_permut[len - i] < table_permut[i]) {
-      permut()
+  for (int i = len - 1; i > 0; i--) {
+    if (table_permut[i - 1] < table_permut[i]) {
+      permut(table_permut, i - 1, len);
+      break;
     }
   }
 }
-
-void shift_elem(T* array, int pos_i, int pos_nexti, int len, int index_j) {}
 
 void input_array(T* array, int len) {
   for (int i = 0; i < len; i++) {
@@ -38,7 +38,10 @@ void input_array(T* array, int len) {
 }
 
 void permut(T* table_permut, int pos, int len) {
-  table_permut[len - 1] = table_permut[pos];
+  int next_i = next_elem(table_permut, pos, len);
+  int bufer = table_permut[pos];
+  table_permut[pos] = table_permut[next_i];
+  table_permut[next_i] = bufer;
   sort(table_permut, pos + 1, len);
 }
 
@@ -49,7 +52,7 @@ void sort(T* table_permut, int pos, int len) {
       if (table_permut[j] > table_permut[j + 1]) {
         bufer = table_permut[j + 1];
         table_permut[j + 1] = table_permut[j];
-        table_permut[i] = bufer;
+        table_permut[j] = bufer;
       }
     }
   }
@@ -59,4 +62,14 @@ void output(T* array, int len) {
   for (int i = 0; i < len; i++) {
     printf("%d ", array[i]);
   }
+}
+
+int next_elem(T* table_permut, int pos, int len) {
+  sort(table_permut, pos + 1, len);
+  for (int i = pos; i < len; i++) {
+    if (table_permut[i] > table_permut[pos]) {
+      return i;
+    }
+  }
+  return 0;
 }
