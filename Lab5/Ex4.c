@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-#define T int
+#define T char
 
 void input_array(T* array, int len);
 void output(T* array, int len);
@@ -29,16 +29,16 @@ void next_permut(T* table_permut, int len) {
       break;
     }
   }
-  if (len == 2) {
-    int bufer = table_permut[1];
-    table_permut[1] = table_permut[0];
-    table_permut[0] = bufer;
-  }
 }
 
 void input_array(T* array, int len) {
-  for (int i = 0; i < len; i++) {
-    scanf("%d", &array[i]);
+  char c;
+  for (int i = 0; i < len;) {
+    scanf("%c", &c);
+    if (c != ' ' && c != '\n') {
+      array[i] = (int)c;
+      i++;
+    }
   }
 }
 
@@ -65,7 +65,7 @@ void sort(T* table_permut, int pos, int len) {
 
 void output(T* array, int len) {
   for (int i = 0; i < len; i++) {
-    printf("%d ", array[i]);
+    printf("%c ", array[i]);
   }
 }
 
@@ -76,5 +76,5 @@ int next_elem(T* table_permut, int pos, int len) {
       return i;
     }
   }
-  return 0;
+  return pos;
 }
