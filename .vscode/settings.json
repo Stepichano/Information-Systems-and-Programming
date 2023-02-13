@@ -4,6 +4,9 @@
     "math.h": "c",
     "typeinfo": "c",
     "stdlib.h": "c",
-    "cstdlib": "c"
+    "cstdlib": "c",
+    "xiosbase": "c",
+    "xlocale": "c",
+    "xutility": "c"
   }
 }
